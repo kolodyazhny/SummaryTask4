@@ -1,0 +1,9 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+<div>
+	<c:if test="${not empty message}">
+		<p style="color: red;">${message}</p>
+	</c:if>
+</div>
+</html>

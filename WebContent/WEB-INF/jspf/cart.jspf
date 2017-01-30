@@ -1,0 +1,26 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+<c:choose>
+	<c:when test="${not empty cartBeans}">
+		<p>Items in cart:</p>
+		<c:forEach items="${cartBeans}" var="bean">
+			${bean.getProductName()} : ${bean.getOrderItemProdctsCount()} <br>
+		</c:forEach>
+		<p>Total price: ${cart.getTotalPrice()}</p>
+		<c:choose>
+			<c:when test="${not empty user}">
+				<a href="controller?command=navigator&page=office">Place
+					order</a>
+			</c:when>
+			<c:otherwise>
+				<c:set var="message" value="Please, login to place an order!"></c:set>
+				<a href="controller?command=navigator&page=login">Place order</a>
+			</c:otherwise>
+		</c:choose>
+	</c:when>
+	<c:otherwise>
+		Cart is empty
+	</c:otherwise>
+</c:choose>
+</html>

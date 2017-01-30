@@ -1,0 +1,14 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+<div>
+	<h3>Hello, ${user.getLogin()}</h3>
+	<h3>
+		<a href="controller?command=processUserOffice&userId=${user.getId()}">Your
+			cabinet</a>
+	</h3>
+	<h3>
+		<a href="controller?command=processLogout">Logout</a>
+	</h3>
+</div>
+</html>

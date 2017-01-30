@@ -1,0 +1,53 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+
+<%-- <c:set var="language" --%>
+<%-- 	value="${not empty param.language ? param.language : not empty language ? language : 'en'}" --%>
+<%-- 	scope="session" /> --%>
+<%-- <fmt:setLocale value="${language}" scope="session" /> --%>
+<%-- <fmt:setBundle basename="ua.nure.kolodiazhny.SummaryTask4.resources.lang" /> --%>
+<%@include file="directive/format.jspf" %>
+
+
+<html>
+<div>
+	<div align="right">
+		<c:if test="${empty user}">
+			<%@include file="loginBox.jspf"%>
+		</c:if>
+		<c:if test="${not empty user}">
+			<%@include file="userBox.jspf"%>
+		</c:if>
+		<form action="controller">
+			<input type="hidden" name="command" value="navigator"> <input
+				type="hidden" name="page" value="main"> <select
+				id="language" name="language" onchange="submit()">
+				<option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+				<option value="uk" ${language == 'uk' ? 'selected' : ''}>Україна</option>
+			</select>
+		</form>
+	</div>
+</div>
+<div align="left">
+	<%@include file="cart.jspf"%>
+</div>
+<div align="center">
+	<table>
+		<tr>
+			<td><a title="Main page"
+				href="controller?command=navigator&page=main"><fmt:message
+						key="header.href.main" /></a></td>
+			<td><a title="Products"
+				href="controller?command=displayProducts"><fmt:message key="header.href.shop"/></a></td>
+			<td><a title="Information about the shop"
+				href="controller?command=navigator&page=about"><fmt:message key="header.href.about"/></a></td>
+			<td><a title="Contacts"
+				href="controller?command=navigator&page=contacts"><fmt:message key="header.href.contacts"/></a></td>
+			<c:if test="${role eq 'ADMIN'}">
+				<td><a title="Administrator's office"
+					href="controller?command=navigator&page=admin"><fmt:message key="header.href.admin"/></a></td>
+			</c:if>
+		</tr>
+	</table>
+</div>
+</html>

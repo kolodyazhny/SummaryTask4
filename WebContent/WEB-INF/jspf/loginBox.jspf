@@ -1,0 +1,14 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+<table>
+	<tr>
+		<td><a href="controller?command=navigator&page=login">Login</a></td>
+	</tr>
+	<tr>
+		<td>Do not have an account? <br> <a href="controller?command=navigator&page=registration">Register
+				NOW!</a>
+		</td>
+	</tr>
+</table>
+</html>

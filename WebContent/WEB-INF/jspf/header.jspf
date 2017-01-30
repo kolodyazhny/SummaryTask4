@@ -1,0 +1,66 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<%@include file="directive/format.jspf"%>
+<html>
+<body>
+	<div class="navbar navbar-inverse navbar-static=top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="controller?command=navigator&page=main"><img
+					src="<c:url value="/bootstrap/img/lemon_logo.png" />" width="45"
+					height="45"></a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a title="Main page"
+					href="controller?command=navigator&page=main"><fmt:message
+							key="header.href.main" /></a></li>
+				<li><a title="Products"
+					href="controller?command=displayProducts"><fmt:message
+							key="header.href.shop" /></a></li>
+				<li><a title="Information about the shop"
+					href="controller?command=navigator&page=about"><fmt:message
+							key="header.href.about" /></a></li>
+				<li><a title="Contacts"
+					href="controller?command=navigator&page=contacts"><fmt:message
+							key="header.href.contacts" /></a></li>
+				<c:if test="${user.getRoleId() == 1}">
+					<li><a title="Administrator's office"
+						href="controller?command=navigator&page=admin"><fmt:message
+								key="header.href.admin" /></a></li>
+				</c:if>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${not empty cartBeans}">
+					<li><c:choose>
+							<c:when test="${not empty user}">
+								<a href="controller?command=navigator&page=office"><span
+									class="glyphicon glyphicon-shopping-cart"></span> Cart:
+									${cart.getTotalPrice()}</a>
+							</c:when>
+							<c:otherwise>
+								<a href="controller?command=navigator&page=login"><span
+									class="glyphicon glyphicon-shopping-cart"></span> Cart:
+									${cart.getTotalPrice()}</a>
+							</c:otherwise>
+						</c:choose></li>
+				</c:if>
+				<c:choose>
+					<c:when test="${empty user}">
+						<li><a href="controller?command=navigator&page=registration"><span
+								class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+						<li><a href="controller?command=navigator&page=login"><span
+								class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a
+							href="controller?command=processUserOffice&userId=${user.getId()}"><span
+								class="glyphicon glyphicon-user"></span> Your office</a></li>
+						<li><a href="controller?command=processLogout"><span
+								class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<%@include file="directive/page.jspf"%>
+<%@include file="directive/taglib.jspf"%>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!------------------- Web page title ------------------->
+		<title>${title}</title>
+		<!------------------- Bootstrap ------------------->
+		<link href="<c:url value="/bootstrap/css/bootstrap.css"/>" rel="stylesheet">
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+		<script src="<c:url value="/bootstrap/js/bootstrap.js"/>"></script>
+	</head>
+</html>
